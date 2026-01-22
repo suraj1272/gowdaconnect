@@ -31,7 +31,7 @@ const blogs = [
   },
   {
     id: 4,
-    title: "Importance of networking in our Community - Marathi Connect",
+    title: "Importance of networking in our Community - Gowda Connect",
     author: "Udayan Deshpande",
     date: "03/11/2020",
     excerpt:

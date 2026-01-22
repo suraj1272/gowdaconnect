@@ -26,7 +26,7 @@ const blogs = [
     image: "https://images.unsplash.com/photo-1604908177522-04044c6b5b70",
   },
   {
-    title: "The Marathi Tadka's Kheema",
+    title: "The Gowda Tadka's Kheema",
     image: "https://images.unsplash.com/photo-1601050690597-df0568f70950",
   },
   {

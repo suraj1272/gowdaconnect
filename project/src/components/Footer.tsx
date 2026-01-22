@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-slate-700 text-white py-14 px-6">
@@ -27,8 +28,12 @@ const Footer = () => {
 
         <div>
           <h4 className="font-semibold mb-3">Website</h4>
+          <Link to="/">
           <p>Homepage</p>
+          </Link>
+          <Link to="/register">
           <p>Member Login</p>
+          </Link>
         </div>
       </div>
 

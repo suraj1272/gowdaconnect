@@ -6,7 +6,7 @@ const photos = [
   { name: "The Rising Soul Yoga & Diet", image: "https://images.unsplash.com/photo-1554284126-aa88f22d8b74" },
   { name: "Kheema Pav", image: "https://images.unsplash.com/photo-1601050690597-df0568f70950" },
   { name: "BookMyPooja Flyer", image: "https://images.unsplash.com/photo-1602052793312-b99c2a9ee797" },
-  { name: "Bangalore Marathi Offline", image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" },
+  { name: "Bangalore Gowda Offline", image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" },
   { name: "Embassy Orchid, Bangalore", image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2" },
   { name: "Oris Dental Care", image: "https://images.unsplash.com/photo-1606813902919-8f50a05b17f0" },
   { name: "Vinay’s Residence", image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c" },

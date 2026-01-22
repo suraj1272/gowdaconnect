@@ -44,7 +44,7 @@ const BlogDetail = () => {
 
             {/* DESCRIPTION */}
             <p className="text-sm text-gray-700 mt-6 leading-relaxed">
-              Most trusted and leading Matrimony for our Marathi community now
+              Most trusted and leading Matrimony for our Gowda community now
               in Bangalore with personal touch and guidance for finding your
               perfect life partner.
             </p>

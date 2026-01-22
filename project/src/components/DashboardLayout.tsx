@@ -1,0 +1,14 @@
+import Sidebar from './Sidebar';
+
+export function DashboardLayout({ children }) {
+  return (
+    <div className="flex min-h-screen bg-gray-50">
+      <Sidebar />
+      <div className="flex-1 lg:ml-64">
+        <main className="p-6">
+          {children}
+        </main>
+      </div>
+    </div>
+  );
+}

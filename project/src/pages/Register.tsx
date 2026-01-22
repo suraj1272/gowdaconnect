@@ -1,16 +1,55 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { ChevronDown } from 'lucide-react';
+import indiaCities from '../../data/cities.json';
+
+interface City {
+  City: string;
+  State: string;
+  District: string;
+}
 
 export function Register() {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [age, setAge] = useState<number | null>(null);
+  const [city, setCity] = useState('');
+  const [citySearch, setCitySearch] = useState('');
+  const [showCityDropdown, setShowCityDropdown] = useState(false);
   const [membershipType, setMembershipType] = useState('free');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { register } = useAuth();
+
+  // Get unique cities from JSON
+  const citiesData = (indiaCities as { cities: City[] }).cities;
+  const uniqueCities = Array.from(new Set(citiesData.map(c => c.City))).sort();
+
+  const filteredCities = uniqueCities.filter(c =>
+    c.toLowerCase().includes(citySearch.toLowerCase())
+  );
+
+  const calculateAge = (dob: string) => {
+    if (!dob) return;
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let calculatedAge = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      calculatedAge--;
+    }
+    setAge(calculatedAge);
+  };
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const dob = e.target.value;
+    setDateOfBirth(dob);
+    calculateAge(dob);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +85,6 @@ export function Register() {
         'Verified Tag (Optional @ Extra Rs.)',
         'Pioneer Profile - Example',
       ],
-      highlighted: true,
     },
     {
       id: 'basic',
@@ -85,18 +123,18 @@ export function Register() {
           {plans.map((plan) => (
             <div
               key={plan.id}
-              className={`rounded-lg overflow-hidden shadow-lg transition transform hover:scale-105 ${
-                plan.highlighted ? 'ring-2 ring-orange-500' : ''
+              className={`rounded-lg overflow-hidden shadow-lg transition transform hover:scale-105 flex flex-col h-full ${
+                membershipType === plan.id ? 'ring-2 ring-orange-500' : ''
               }`}
             >
-              <div className={`${plan.highlighted ? 'bg-orange-500' : 'bg-orange-400'} text-white p-6 text-center`}>
+              <div className={`${membershipType === plan.id ? 'bg-orange-500' : 'bg-orange-400'} text-white p-6 text-center`}>
                 <h2 className="text-xl font-bold mb-1">{plan.name}</h2>
                 <p className="text-sm mb-2">{plan.subtitle}</p>
                 <p className="text-lg font-bold">{plan.price}</p>
                 {plan.description && <p className="text-xs mt-2">{plan.description}</p>}
               </div>
 
-              <div className="bg-white p-6">
+              <div className="bg-white p-6 flex flex-col flex-1 justify-between">
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="text-sm text-gray-700">
@@ -164,6 +202,72 @@ export function Register() {
                 required
                 className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-orange-500"
               />
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Date Of Birth</label>
+              <div className="flex gap-4">
+                <input
+                  type="date"
+                  value={dateOfBirth}
+                  onChange={handleDateChange}
+                  required
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-orange-500"
+                />
+                {age !== null && (
+                  <div className="px-4 py-2 bg-orange-50 border border-orange-300 rounded flex items-center">
+                    <span className="text-sm font-semibold text-orange-600">Age: <span className="text-lg">{age}</span></span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">City</label>
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setShowCityDropdown(!showCityDropdown)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-orange-500 text-left flex justify-between items-center bg-white hover:bg-gray-50"
+                >
+                  <span>{city || 'Select your city'}</span>
+                  <ChevronDown size={18} className={`transition-transform ${showCityDropdown ? 'rotate-180' : ''}`} />
+                </button>
+
+                {showCityDropdown && (
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded shadow-lg z-10">
+                    <input
+                      type="text"
+                      placeholder="Search cities..."
+                      value={citySearch}
+                      onChange={(e) => setCitySearch(e.target.value)}
+                      className="w-full px-4 py-2 border-b border-gray-300 focus:outline-none"
+                      autoFocus
+                    />
+                    <ul className="max-h-48 overflow-y-auto">
+                      {filteredCities.length > 0 ? (
+                        filteredCities.map((c) => (
+                          <li key={c}>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setCity(c);
+                                setShowCityDropdown(false);
+                                setCitySearch('');
+                              }}
+                              className="w-full text-left px-4 py-2 hover:bg-orange-50 hover:text-orange-600 transition"
+                            >
+                              {c}
+                            </button>
+                          </li>
+                        ))
+                      ) : (
+                        <li className="px-4 py-2 text-gray-500 text-sm">No cities found</li>
+                      )}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="mb-6 p-4 bg-blue-50 rounded">

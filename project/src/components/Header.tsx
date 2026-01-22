@@ -41,7 +41,7 @@ export function Header() {
             </Link>
 
             {isAuthenticated ? (
-              <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
                 <Link
                   to="/member-directory"
                   className="text-gray-700 hover:text-orange-500 text-sm"
@@ -57,7 +57,7 @@ export function Header() {
                 </button>
               </div>
             ) : (
-              <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
                 <Link
                   to="/login"
                   className="text-gray-700 hover:text-orange-500 text-sm"
@@ -120,7 +120,7 @@ export function Header() {
 
                 <div className="absolute left-0 top-full w-56 bg-orange-500 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <Link
-                    to="/member-directory"
+                    to="/dashboard"
                     className="block px-4 py-2 text-white hover:bg-orange-600"
                   >
                     Member Directory
@@ -189,7 +189,7 @@ export function Header() {
 
               {/* OUR MISSION */}
               <Link
-                to="/our-mission"
+                to="/about"
                 className="text-white py-3 px-6 hover:bg-orange-600"
               >
                 Our Mission
@@ -232,7 +232,7 @@ export function Header() {
 
               {/* MEMBER DIRECTORY */}
               <Link
-                to="/member-directory"
+                to="/dashboard"
                 className="text-white py-3 px-4 hover:bg-orange-600 border-b border-orange-600"
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -298,7 +298,7 @@ export function Header() {
 
               {/* OUR MISSION */}
               <Link
-                to="/our-mission"
+                to="/about"
                 className="text-white py-3 px-4 hover:bg-orange-600 border-b border-orange-600"
                 onClick={() => setMobileMenuOpen(false)}
               >

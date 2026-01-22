@@ -5,7 +5,7 @@ const classifieds = [
   {
     id: 1,
     title: "Yamaha FZS Bike For Resale | 2012 | +919405138489",
-    author: "Marathi Connect",
+    author: "Gowda Connect",
     postedOn: "07/06/2023",
     condition: "Used",
     type: "For Sale",

@@ -15,7 +15,7 @@ const videos = [
   {
     id: 2,
     title:
-      "Meet Sulakshana, founder of GoSwasthya at the Marathi Connect's Entrepreneurs Conference - Bengaluru",
+      "Meet Sulakshana, founder of GoSwasthya at the Gowda Connect's Entrepreneurs Conference - Bengaluru",
     postedOn: "23/03/2025",
     postedBy: "Sulakshana Pundle",
     location:

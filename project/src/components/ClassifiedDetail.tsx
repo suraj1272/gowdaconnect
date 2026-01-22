@@ -32,7 +32,7 @@ const ClassifiedDetail = () => {
           <div className="flex justify-between items-center bg-white px-4 py-3 rounded shadow-sm mb-6">
             <span className="text-sm text-gray-600">
               Posted 07/06/2023 in <strong>Bike</strong> by{" "}
-              <strong>Marathi Connect</strong>
+              <strong>Gowda Connect</strong>
             </span>
 
             <button className="flex items-center gap-1 text-sm text-gray-600 hover:text-orange-500">

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "../api/axios";
 import ProtectedLayout from "../components/ProtectedLayout";
-import MyJobs from "../components/MyJobs"; // Import the list component
+import MyJobs from "../components/Myjobs"; // Import the list component
 
 export default function PostJob() {
   // State to toggle between 'create' form and 'list' view

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "../api/axios";
 import ProtectedLayout from "../components/ProtectedLayout";
-import MyAds from "../components/MyAds"; // Import the new component
+import MyAds from "../components/Myads.js";
 
 export default function PostAd() {
   // Tab State

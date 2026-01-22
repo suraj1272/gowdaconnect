@@ -1,6 +1,6 @@
 import React from 'react';
 import { Users, Calendar, ShoppingBag, Search, MapPin } from 'lucide-react';
-import ScrollStack, { ScrollStackItem } from '../components/ScrollStack.jsx'; // Adjust path if needed
+import ScrollStack, { ScrollStackItem } from '../components/ScrollStack.js'; // Adjust path if needed
 
 // Component Imports
 import NewMembers from '../components/NewMembers';
